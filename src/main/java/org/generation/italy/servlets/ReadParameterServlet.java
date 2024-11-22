@@ -7,16 +7,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
-@WebServlet("/hello")
-public class HelloWorldServlet extends HttpServlet {
+@WebServlet("/showData")
+public class ReadParameterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        response.getWriter().write(".....<h1>Hello, World!</h1>");
-        System.out.println("Hello World");
+        response.getWriter().write("<h1>Dati del programmatore</h1>");
+        String pName = request.getParameter("pName");
+        String pLastname = request.getParameter("pLastname");
+        String pLanguage = request.getParameter("pLanguage");
+        PrintWriter out = response.getWriter();
+        out.println("<p>nome: "+ pName +" cognome: "+ pLastname +" linguaggio preferito: "+pLanguage +"</p>");
     }
 
     @Override
