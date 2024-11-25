@@ -14,6 +14,6 @@ public class ShowBooksAction implements Action{
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         List<Book> all = bookRepo.getAll();
         request.setAttribute("ALL_BOOKS", all);
-        return "allBooks.jsp";
+        return "showBooks.jsp";
     }
 }
